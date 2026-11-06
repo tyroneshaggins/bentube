@@ -1,0 +1,196 @@
+
+        <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BenTube -  Ben&#x27;s Conker Tips + Funny Gaming Extras</title><link rel="icon" type="image/x-icon" href="/favicon/favicon-32x32.png">
+
+<link rel="stylesheet" href="/2021/css/main.css?v=3">
+</head>
+<body style="--bg-image:url('/2021/thumbs/rnfsDc-T8AY.jpg');">
+<div class="blurred-box">
+<div class="card">
+
+<center><a href="/2021/"><img controls src="/2021/img/BT.png"alt="Homepage"></a></center></br><h1> Ben G Gangsta Video Archive </h1>
+<center>Archived videos, information & comments from early 2021 (February/March)</center>
+
+<h2>Video Title: Ben&#x27;s Conker Tips + Funny Gaming Extras</h2>
+
+<center>
+<a href="/2021/thumbs/rnfsDc-T8AY.jpg" target="_blank">
+  <img class="thumbnail" controls src="/2021/compressedthumbs/rnfsDc-T8AY.jpg" width="320" height="180" alt="Click to enlarge">
+</a>
+</center>
+
+<div class="embed">
+<center><b>Video courtesy of the Internet Archive</b></center></br>
+
+<div class="video-tabs">
+    <button onclick="showVideo('mkv', this)" class="active">
+        MKV Original
+    </button>
+
+    <button onclick="showVideo('mp4', this)">
+        MP4 Re-encode
+    </button>
+</div>
+
+<div id="mkv" class="video-pane active">
+    <video width="640" height="360" controls preload="none" data-src="
+        https://archive.org/download/ben-g-archive-part-3/Ben%27s%20Conker%20Tips%20%2B%20Funny%20Gaming%20Extras%20rnfsDc-T8AY.mkv">
+    </video>
+</div>
+
+<div id="mp4" class="video-pane">
+    <video width="640" height="360" controls preload="none" data-src="
+        https://archive.org/download/ben-g-archive-part-3/Ben%27s%20Conker%20Tips%20%2B%20Funny%20Gaming%20Extras%20rnfsDc-T8AY.mp4">
+    </video>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Video Information</h2>
+
+<table class="info-table">
+
+<tr>
+<td><b>Upload Date</b></td>
+<td>03 September 2018</td>
+</tr>
+
+<tr>
+<td><b>Duration</b></td>
+<td>14m 46s</td>
+</tr>
+
+<tr>
+<td><b>Categories</b></td>
+<td>People & Blogs</td>
+</tr>
+
+<tr>
+<td><b>Views</b></td>
+<td>16</td>
+</tr>
+
+<tr>
+<td><b>Likes</b></td>
+<td>0</td>
+</tr>
+
+<tr>
+<td><b>Dislikes</b></td>
+<td>0</td>
+</tr>
+
+<tr>
+<td><b>Original URL</b></td>
+<td><a href="https://www.youtube.com/watch?v=rnfsDc-T8AY">Here</a></td>
+</tr>
+
+<tr>
+<td><b>Original Channel URL</b></td>
+<td><a href="http://www.youtube.com/channel/UCQ8DhJ4V2QCWwk2Uq46hAqA">Here</a></td>
+</tr>
+
+</table>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>Original Description</h2>
+
+<p class="no-description"><em>An original description wasn&#x27;t provided.</em></p>
+
+</div>
+
+<div class="card-comments">
+
+<center><h2>Original Comments</h2>
+Comments are courtesy of egbertbouman's comment downloader on <a href="https://github.com/egbertbouman/youtube-comment-downloader">Github</a></br></br></center>
+
+
+
+</div>
+</div>
+<script controls src="/2021/js/main.js"></script>
+
+<script id="video-tab-switcher">
+(function () {
+  var PANE_IDS = ['mkv', 'mp4'];
+
+  function getPane(id) { return document.getElementById(id); }
+  function getVideo(pane) { return pane ? pane.querySelector('video') : null; }
+
+  function unload(video) {
+    if (!video) return;
+    var t = video.ended ? 0 : video.currentTime;
+    if (t > 0) video.dataset.time = t; else delete video.dataset.time;
+    try { video.pause(); } catch (e) {}
+    if (video.getAttribute('src')) {
+      video.removeAttribute('src');
+      video.load();
+    }
+  }
+
+  function load(video) {
+    if (!video) return;
+    var src = video.getAttribute('data-src');
+    if (src && !video.getAttribute('src')) {
+      video.setAttribute('src', src);
+      video.load();
+    }
+  }
+
+  function restore(video) {
+    var t = parseFloat(video.dataset.time || '0');
+    if (!(t > 0)) return;
+    var apply = function () {
+      try { video.currentTime = t; } catch (e) {}
+      video.removeEventListener('loadedmetadata', apply);
+    };
+    if (video.readyState >= 1) apply();
+    else video.addEventListener('loadedmetadata', apply);
+  }
+
+  window.showVideo = function (name, button) {
+    var target = getPane(name);
+    if (!target) return;
+
+    var current = document.querySelector('.video-pane.active');
+    if (current && current !== target) unload(getVideo(current));
+
+    PANE_IDS.forEach(function (id) {
+      var pane = getPane(id);
+      if (pane) pane.classList.toggle('active', pane === target);
+    });
+
+    document.querySelectorAll('.video-tabs button').forEach(function (btn) {
+      btn.classList.toggle('active', btn === button);
+    });
+
+    var video = getVideo(target);
+    if (!video) return;
+
+    load(video);
+    restore(video);
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var current = document.querySelector('.video-pane.active') || getPane('mkv');
+    load(getVideo(current));
+  });
+})();
+</script>
+
+</body>
+</html>
+        
